@@ -1,0 +1,383 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  min-height: 100dvh;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ── CSS VARS (dark default) ── */
+:root {
+  --bg-deep: #111827;
+  --bg-ink: #0b1020;
+  --text: #fff8ef;
+  --muted: #9fb7b1;
+  --mint: #70d6c7;
+  --coral: #ff7a6b;
+  --gold: #ffd166;
+  --plum: #7c5cff;
+  --acc: #a855f7;
+  --acc2: #c084fc;
+  --screen-bg: #0a0812;
+  --screen-txt: #f0e6ff;
+  --screen-sub: #a090c0;
+  --screen-dim: #5a4878;
+  --pod-s: rgba(120, 80, 180, 0.35);
+  --full-bg: linear-gradient(135deg, #1a0a2e 0%, #0d0518 50%, #1a0a2e 100%);
+  --full-card: rgba(255, 255, 255, 0.05);
+  --full-border: rgba(192, 132, 252, 0.2);
+  --full-txt: #f0e6ff;
+  --full-sub: #b0a0d0;
+  --full-dim: #7060a0;
+}
+
+[data-theme='light'] {
+  --acc: #7c3aed;
+  --acc2: #b86efe;
+  --pod-s: rgba(100, 60, 180, 0.18);
+  --full-bg: linear-gradient(135deg, #f0e8ff 0%, #e8d8ff 50%, #f0e0ff 100%);
+  --full-card: rgba(124, 58, 237, 0.06);
+  --full-border: rgba(124, 58, 237, 0.18);
+  --full-txt: #1a0030;
+  --full-sub: #5a2090;
+  --full-dim: #9060c0;
+}
+
+/* ── SHELL ── */
+.shell {
+  background:
+    linear-gradient(115deg,
+      rgba(192, 132, 252, 0.16),
+      transparent 34%),
+    linear-gradient(245deg,
+      rgba(216, 180, 254, 0.12),
+      transparent 36%),
+    linear-gradient(180deg,
+      #231438 0%,
+      #161328 45%,
+      #0d1020 100%);
+
+  transition: background .5s;
+}
+
+[data-theme='light'] .shell {
+  background: linear-gradient(115deg,
+      rgba(140, 80, 255, 0.12),
+      transparent 34%),
+    linear-gradient(245deg, rgba(200, 100, 255, 0.12), transparent 36%),
+    linear-gradient(180deg, #e8d8ff 0%, #f0e4ff 100%);
+}
+
+/* ── BG SHIMMER OVERLAY ── */
+.shell-shimmer {
+  background-image:
+    radial-gradient(circle,
+      rgba(255, 255, 255, .7) 0 1px,
+      transparent 1.4px),
+    linear-gradient(120deg,
+      transparent 12%,
+      rgba(192, 132, 252, .15),
+      transparent 44%),
+    linear-gradient(70deg,
+      transparent 25%,
+      rgba(216, 180, 254, .12),
+      transparent 58%);
+
+  background-size: 92px 92px, 100% 100%, 100% 100%;
+  mix-blend-mode: screen;
+  opacity: .5;
+}
+
+/* ── Y2K disc ── */
+.disc {
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle,
+      rgba(11, 16, 32, .62) 0 12%,
+      transparent 13% 19%,
+      rgba(255, 255, 255, .45) 20% 21%,
+      transparent 22%),
+
+    conic-gradient(from 40deg,
+      rgba(255, 255, 255, .14),
+      rgba(216, 180, 254, .55),
+      rgba(192, 132, 252, .45),
+      rgba(168, 85, 247, .50),
+      rgba(233, 213, 255, .35),
+      rgba(255, 255, 255, .14));
+
+  box-shadow:
+    inset 0 0 30px rgba(255, 255, 255, .22),
+    0 0 60px rgba(192, 132, 252, .18);
+
+  opacity: .42;
+}
+
+.disc-r {
+  animation: cdSpinReverse 34s linear infinite;
+}
+
+/* ── PIXEL overlay ── */
+.ppix {
+  background-image: linear-gradient(rgba(255, 248, 239, 0.07) 1px,
+      transparent 1px),
+    linear-gradient(90deg, rgba(255, 248, 239, 0.07) 1px, transparent 1px),
+    radial-gradient(circle,
+      rgba(216, 180, 254, 0.7) 0 1px,
+      transparent 1.5px),
+    radial-gradient(circle,
+      rgba(192, 132, 252, 0.7) 0 1px,
+      transparent 1.5px);
+  background-size: 34px 34px, 34px 34px, 120px 120px, 156px 156px;
+  background-position: center, center, 18px 30px, 70px 90px;
+  mask-image: radial-gradient(circle at center, black, transparent 76%);
+  opacity: 0.28;
+  animation: pixelGlide 16s linear infinite;
+}
+
+/* ── iPOD BODY ── */
+.ipod-body {
+  background: linear-gradient(165deg, #e8e0f0 0%, #d4cce8 40%, #c8bede 100%);
+  box-shadow: 0 20px 60px var(--pod-s), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+}
+
+[data-theme='light'] .ipod-body {
+  background: linear-gradient(165deg, #ede5ff 0%, #ddd0f5 40%, #ccc0e8 100%);
+}
+
+/* ── WHEEL ── */
+.wheel-outer {
+  background: linear-gradient(145deg, #d8d0e8, #c4b8d8);
+  box-shadow: 0 3px 10px var(--pod-s), 0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+}
+
+[data-theme='light'] .wheel-outer {
+  background: linear-gradient(145deg, #e8e0f8, #d8ccea);
+}
+
+.wheel-center-btn {
+  background: linear-gradient(145deg, #ddd8ee, #ccc4e0);
+  box-shadow: 0 2px 6px var(--pod-s), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+}
+
+/* ── SCREEN ── */
+.pod-screen {
+  background: var(--screen-bg);
+}
+.pod-screen::before{
+  content:'';
+  position:absolute;
+  inset:0;
+
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.12),
+    transparent 35%
+  );
+
+  pointer-events:none;
+}
+
+/* ── SCANLINE ── */
+.scanline {
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(180, 100, 255, 0.025) 2px,
+      rgba(180, 100, 255, 0.025) 4px);
+}
+
+/* ── MENU ITEM ── */
+.mi-item {
+  border-left: 3px solid transparent;
+  color:#fff;
+  transition:
+    background 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease,
+    transform 0.35s ease;
+}
+
+.mi-item .mi-text {
+  color: #f0e6ff;
+}
+
+.mi-item .mi-icon {
+  background: rgba(192, 132, 252, 0.1);
+  border: 1px solid rgba(192, 132, 252, 0.18);
+}
+
+.mi-item .mi-chevron {
+  color: #5a4878;
+}
+
+.mi-item.hl,
+.mi-item.active {
+  background: linear-gradient(90deg,
+      rgba(192, 132, 252, .25),
+      rgba(192, 132, 252, .08));
+
+  backdrop-filter: blur(12px);
+
+  border-left: 3px solid #d8b4fe;
+}
+
+.mi-item.active {
+  background: rgba(192, 132, 252, 0.25);
+}
+
+.mi-item.hl .mi-text,
+.mi-item.active .mi-text {
+  color: #e9d5ff;
+  font-weight: 600;
+}
+
+.mi-item.hl .mi-icon,
+.mi-item.active .mi-icon {
+  background: rgba(192, 132, 252, 0.18);
+  border-color: rgba(216, 180, 254, 0.35);
+  box-shadow: 0 0 12px rgba(192, 132, 252, 0.18);
+}
+
+.mi-item.hl .mi-chevron,
+.mi-item.active .mi-chevron {
+  color: var(--acc2);
+}
+
+/* ── FULL PAGE ── */
+.full-page {
+  background: var(--full-bg);
+  border-color: var(--full-border);
+  color: var(--full-txt);
+  transition: background 0.5s, border-color 0.5s;
+}
+
+.full-card {
+  background: var(--full-card);
+  border-color: var(--full-border);
+}
+
+.full-txt {
+  color: var(--full-txt);
+}
+
+.full-sub {
+  color: var(--full-sub);
+}
+
+.full-dim {
+  color: var(--full-dim);
+}
+
+.full-acc2 {
+  color: var(--acc2);
+}
+
+/* ── CONTACT INPUT ── */
+.full-cinp {
+  background: var(--full-card);
+  border-color: var(--full-border);
+  color: var(--full-txt);
+  transition: background 0.4s, color 0.4s, border-color 0.4s;
+}
+
+.full-cinp::placeholder {
+  color: var(--full-dim);
+}
+
+.full-cinp:focus {
+  border-color: rgba(192, 132, 252, 0.5);
+  outline: none;
+}
+
+/* ── WARP CANVAS ── */
+#warpCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ── THEME TOGGLE ── */
+.t-knob {
+  background: var(--acc2);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.t-knob-light {
+  transform: translateY(20px);
+}
+
+.theme-toggle {
+  transition: background 0.3s, transform 0.3s;
+}
+
+/* ── INTRO orbit ── */
+.i-orbit {}
+
+/* ── CABLE ── */
+.cable {
+  border: 2px solid rgba(255, 248, 239, 0.18);
+  border-color: rgba(255, 248, 239, 0.18) transparent transparent rgba(112, 214, 199, 0.2);
+  filter: drop-shadow(0 0 10px rgba(112, 214, 199, 0.15));
+}
+
+/* ── SCROLLBAR ── */
+.thin-scroll::-webkit-scrollbar {
+  width: 3px;
+}
+
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: rgba(192, 132, 252, 0.4);
+  border-radius: 99px;
+}
+
+/* ── CONTACT INPUTS (pod screen) ── */
+.c-inp {
+  background: rgba(192, 132, 252, 0.07);
+  border: 1px solid rgba(192, 132, 252, 0.2);
+  color: #f0e6ff;
+  outline: none;
+}
+
+.c-inp::placeholder {
+  color: #5a4878;
+}
+
+.c-inp:focus {
+  border-color: rgba(192, 132, 252, 0.5);
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .shell-shimmer,
+  .disc,
+  .ppix,
+  .i-orbit {
+    animation: none !important;
+  }
+}
