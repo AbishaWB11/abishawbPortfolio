@@ -41,13 +41,15 @@ function SectionHeader({ title, onBack }) {
     >
       <button
         className="full-acc2 font-orbitron text-[8px] sm:text-[9px] font-bold tracking-[1px] cursor-pointer rounded-full px-2 sm:px-3 py-[6px] transition-all duration-200 flex-shrink-0"
-        style={{ background: 'rgba(192,132,252,0.1)', border: '1px solid rgba(192,132,252,0.25)' }}
+        style={{
+          background: 'rgba(192,132,252,0.1)',
+          border: '1px solid rgba(192,132,252,0.25)'
+        }}
         onClick={onBack}
         onMouseEnter={e => (e.currentTarget.style.background = 'rgba(192,132,252,0.22)')}
         onMouseLeave={e => (e.currentTarget.style.background = 'rgba(192,132,252,0.1)')}
       >
-        <span className="hidden sm:inline"><ArrowLeft size={16} /></span>
-        <span className="sm:hidden"></span>
+        <ArrowLeft size={18} />
       </button>
       <div className="full-txt font-orbitron text-[11px] sm:text-[12px] font-black flex-1 text-center tracking-[1px] sm:tracking-[2px] min-w-0 truncate">
         {title}

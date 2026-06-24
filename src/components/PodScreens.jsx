@@ -104,11 +104,17 @@ function InnerNav({ title, onBack }) {
       }}
     >
       <button
-        className="font-orbitron text-[9px] tracking-[1px] cursor-pointer"
-        style={{ color: 'var(--acc2)', background: 'none', border: 'none' }}
         onClick={onBack}
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center rounded-full"
+        style={{
+          width: '32px',
+          height: '32px',
+          background: 'rgba(124,92,255,.15)',
+          border: '1px solid rgba(124,92,255,.25)',
+          color: '#7c5cff'
+        }}
       >
-        <ArrowLeft size={16} />
+        <ArrowLeft size={18} strokeWidth={2.5} />
       </button>
     </div>
   )
